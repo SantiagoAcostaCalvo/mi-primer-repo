@@ -2,7 +2,7 @@
 let accionUsuario = "devolucion";
 
 // Datos de ejemplo
-let tipoItem = "libro"; // Cambiar a "revista" o "libro" para simular revistas
+let tipoItem = "libro"; // Cambiar a "revista" o "libro" para simular
 let diasRetraso = 5;
 let ejemplaresPerdidos = 0;
 
