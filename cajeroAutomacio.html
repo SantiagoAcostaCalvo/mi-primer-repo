@@ -1,0 +1,28 @@
+let cajeroEncendido = true; // Cambiar a false si el cajero está apagado
+let saldoCuenta = 1000;
+let opcion = "retiro"; // Puedes cambiar a "consignacion" o "consulta" según la opción deseada
+let montoRetiro = 200;
+let montoConsignacion = 150;
+let mensaje;
+
+if (cajeroEncendido) {
+    if (opcion === "retiro") {
+        if (montoRetiro <= saldoCuenta) {
+            saldoCuenta -= montoRetiro;
+            mensaje = `Retiro exitoso. Saldo restante: $${saldoCuenta}`;
+        } else {
+            mensaje = "Saldo insuficiente para el retiro.";
+        }
+    } else if (opcion === "consignacion") {
+        saldoCuenta += montoConsignacion;
+        mensaje = `Consignación exitosa. Saldo actual: $${saldoCuenta}`;
+    } else if (opcion === "consulta") {
+        mensaje = `Saldo actual: $${saldoCuenta}`;
+    } else {
+        mensaje = "Opción no válida.";
+    }
+} else {
+    mensaje = "El cajero está apagado.";
+}
+
+console.log(mensaje);

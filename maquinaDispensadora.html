@@ -1,0 +1,23 @@
+let maquinaPrendida = true; // Cambiar a false si la máquina está apagada
+let saldo = 20;
+let galletasCompradas = 2;
+let gaseosasCompradas = 1;
+let precioGalleta = 5;
+let precioGaseosa = 10;
+let totalGalletas = galletasCompradas * precioGalleta;
+let totalGaseosas = gaseosasCompradas * precioGaseosa;
+let totalCompra = totalGalletas + totalGaseosas;
+let mensaje;
+
+if (maquinaPrendida) {
+    if (saldo >= totalCompra) {
+        saldo -= totalCompra;
+        mensaje = `Has comprado ${galletasCompradas} galletas y ${gaseosasCompradas} gaseosa(s). Saldo restante: $${saldo}`;
+    } else {
+        mensaje = "Saldo insuficiente para realizar la compra.";
+    }
+} else {
+    mensaje = "La máquina está apagada.";
+}
+
+console.log(mensaje);
