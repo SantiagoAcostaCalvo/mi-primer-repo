@@ -1,0 +1,56 @@
+// Objeto para gestionar las citas médicas
+const sistemaCitasMedicas = {
+  citas: [],
+  
+  // Función para programar una cita
+  programarCita: function (nombrePaciente, fecha, hora, medicoAsignado) {
+    const cita = {
+      nombrePaciente,
+      fecha,
+      hora,
+      medicoAsignado,
+    };
+    this.citas.push(cita);
+    console.log("Cita programada con éxito.");
+  },
+  
+  // Función para ver todas las citas programadas
+  verCitasProgramadas: function () {
+    if (this.citas.length === 0) {
+      console.log("No hay citas programadas.");
+      return;
+    }
+    
+    console.log("Citas programadas:");
+    this.citas.sort((a, b) => {
+      const fechaHoraA = new Date(`${a.fecha} ${a.hora}`);
+      const fechaHoraB = new Date(`${b.fecha} ${b.hora}`);
+      return fechaHoraA - fechaHoraB;
+    });
+    
+    this.citas.forEach((cita, index) => {
+      console.log(`Cita ${index + 1}:`);
+      console.log(`   Paciente: ${cita.nombrePaciente}`);
+      console.log(`   Fecha: ${cita.fecha}`);
+      console.log(`   Hora: ${cita.hora}`);
+      console.log(`   Médico: ${cita.medicoAsignado}`);
+    });
+  },
+  
+  // Función para cancelar una cita
+  cancelarCita: function (indice) {
+    if (indice >= 0 && indice < this.citas.length) {
+      const citaCancelada = this.citas.splice(indice, 1);
+      console.log(`La cita programada para ${citaCancelada[0].nombrePaciente} ha sido cancelada.`);
+    } else {
+      console.log("El índice de cita proporcionado no es válido.");
+    }
+  },
+};
+
+// Ejemplo de uso
+sistemaCitasMedicas.programarCita("Juan Pérez", "2023-10-15", "10:30 AM", "Dr. Smith");
+sistemaCitasMedicas.programarCita("Ana López", "2023-10-16", "2:00 PM", "Dra. Johnson");
+sistemaCitasMedicas.verCitasProgramadas();
+sistemaCitasMedicas.cancelarCita(1);
+sistemaCitasMedicas.verCitasProgramadas();
